@@ -71,7 +71,8 @@ let toHashConverters = {
   'text': (value: EntityValue) => (value as string).toString(),
   'point': (value: EntityValue) => pointToString(value as Point),
   'date': (value: EntityValue) => dateToString(value as Date),
-  'string[]': (value: EntityValue, fieldDef: FieldDefinition) => stringArrayToString(value as string[], fieldDef as StringArrayField)
+  'string[]': (value: EntityValue, fieldDef: FieldDefinition) => stringArrayToString(value as string[], fieldDef as StringArrayField),
+  'object': (value: EntityValue) => (value),
 };
 
 let fromHashConverters = {
@@ -81,7 +82,8 @@ let fromHashConverters = {
   'text': (value: string) => value,
   'point': stringToPoint,
   'date': stringToDate,
-  'string[]': (value: string, fieldDef: FieldDefinition) => stringToStringArray(value, fieldDef as StringArrayField)
+  'string[]': (value: string, fieldDef: FieldDefinition) => stringToStringArray(value, fieldDef as StringArrayField),
+  'object': (value: any) => value,
 };
 
 let toJsonConverters = {
@@ -91,7 +93,8 @@ let toJsonConverters = {
   'text': (value: EntityValue) => value,
   'point': (value: EntityValue) => pointToString(value as Point),
   'date': (value: EntityValue) => dateToNumber(value as Date),
-  'string[]': (value: EntityValue) => value
+  'string[]': (value: EntityValue) => value,
+  'object': (value: EntityValue) => value
 };
 
 let fromJsonConverters = {
@@ -101,7 +104,8 @@ let fromJsonConverters = {
   'text': (value: any) => (value as string),
   'point': (value: any) => stringToPoint(value as string),
   'date': (value: any) => numberToDate(value as number),
-  'string[]': (value: any) => (value as string[])
+  'string[]': (value: any) => (value as string[]),
+  'object': (value: any) => (value)
 }
 
 function pointToString(value: Point): string {

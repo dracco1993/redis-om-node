@@ -9,7 +9,7 @@ export type Point = {
 /** Base interface for all fields. */
 export interface Field {
   /**
-   * The default field name in Redis is the key name defined in the 
+   * The default field name in Redis is the key name defined in the
    * {@link SchemaDefinition}. Overrides the Redis key name if set.
    */
   alias?: string;
@@ -73,8 +73,14 @@ export interface StringArrayField extends Field {
    separator?: string;
 }
 
+/** A field representing a date/time. */
+export interface ObjectField extends Field {
+  /** Yep. It's an object. */
+  type: 'object';
+}
+
 /** Contains instructions telling how to map a property on an {@link Entity} to Redis. */
-export type FieldDefinition = StringField | TextField | NumberField | BooleanField | PointField | DateField | StringArrayField;
+export type FieldDefinition = StringField | TextField | NumberField | BooleanField | PointField | DateField | StringArrayField | ObjectField;
 
 /**
 * Group of {@link FieldDefinition}s that define the schema for an {@link Entity}.

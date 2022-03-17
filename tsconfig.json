@@ -10,17 +10,10 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "lib/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "spec/**/*.spec.ts"
-  ],
+  "include": ["lib/**/*.ts"],
+  "exclude": ["node_modules", "spec/**/*.spec.ts"],
   "typedocOptions": {
-    "entryPoints": [
-      "lib/index.ts"
-    ],
+    "entryPoints": ["lib/index.ts"],
     "out": "docs",
     "excludePrivate": true,
     "excludeInternal": true,
